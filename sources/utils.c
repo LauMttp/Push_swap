@@ -6,7 +6,7 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 17:32:42 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/02/06 14:25:37 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:23:47 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	ft_atol(const char *s, long *num)
 		i++;
 	if (s[i] && (s[i] == '-' || s[i] == '+'))
 	{
-        if (s[i] == '-')
-		    sign *= (-1);
+		if (s[i] == '-')
+			sign *= (-1);
 		i++;
 	}
 	while (s[i])

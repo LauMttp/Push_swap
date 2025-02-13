@@ -6,7 +6,7 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:37:22 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/02/06 22:48:03 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/13 10:10:01 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	check_double(t_stack *stack)
 	return (0);
 }
 
-
-// appeler atoi a chaque nouvel element du tableau
-// creer un nouvel element de la liste si le retour d'atoi est valid
 int	parse_arguments(t_stack *stack, int size, char **args)
 {
 	int		i;
@@ -44,14 +41,16 @@ int	parse_arguments(t_stack *stack, int size, char **args)
 
 	i = 1;
 	j = 0;
+	if (!stack || !args || size == 1)
+		return (1);
 	while (i < size)
 	{
 		if (ft_atol(args[i], &j))
 			return (1);
 		if (j > MAX_INT || j < MIN_INT)
-            return (1);
+			return (1);
 		if (append_node(stack, j))
-            return (1);
+			return (1);
 		i++;
 	}
 	return (0);
@@ -59,8 +58,8 @@ int	parse_arguments(t_stack *stack, int size, char **args)
 
 int	parse_in_stack(t_stack *stack, int ac, char **av)
 {
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 	char	**args;
 
 	i = 0;
@@ -78,7 +77,6 @@ int	parse_in_stack(t_stack *stack, int ac, char **av)
 	return (i);
 }
 
-// valgrind --leak-check=full ./push_swap "44 55 22 66 33 5 88 4 556"
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
@@ -93,14 +91,13 @@ int	main(int ac, char **av)
 		clear_stack(stack_a);
 		return (write(2, "Error\n", 6), 1);
 	}
-	stack_display(stack_a);
 	if (is_stack_sorted(stack_a) == 2)
 	{
 		if (stack_a->max_size == 2)
-        	swap(stack_a, 0);
-    	else if (stack_a->max_size == 3)
+			swap(stack_a, 0);
+		else if (stack_a->max_size == 3)
 			sort_three(stack_a);
-    	else
+		else
 			sort_stack(stack_a);
 	}
 	clear_stack(stack_a);

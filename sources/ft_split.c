@@ -6,7 +6,7 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 17:05:53 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/01/31 22:54:57 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/13 10:38:18 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,19 +95,19 @@ char	**ft_split(char *str, int *count)
 	char	**tab;
 
 	*count = count_words(str) + 1;
-	if (!count)
-		return (0);
+	if (*count == 1)
+		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * *count);
 	if (tab == NULL)
-		return (0);
-	// tab[0] = (char *)malloc(sizeof(char));
-	// // if (tab == NULL)
-	// // {
-	// //     free(tab);
-	// //     return (0);
-	// // }
-	// // tab[0][0] = 0;
+		return (NULL);
+	tab[0] = (char *)malloc(sizeof(char *));
+	if (tab[0] == NULL)
+	{
+		free(tab);
+		return (NULL);
+	}
+	tab[0][0] = 0;
 	if (store_words(tab, str))
-		return (0);
+		return (NULL);
 	return (tab);
 }

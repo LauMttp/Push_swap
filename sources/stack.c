@@ -6,13 +6,13 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:18:40 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/02/06 23:37:15 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:14:26 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./push_swap.h"
 
-// create stack
+// Create stack
 t_stack	*initialize_stack(char name)
 {
 	t_stack	*new_stack;
@@ -41,8 +41,6 @@ int	append_node( t_stack *stack, int value)
 	new_node->value = value;
 	new_node->cheapest = 0;
 	new_node->next = NULL;
-	//to delete
-	new_node->previous = NULL;
 	if (!stack->head)
 		stack->head = new_node;
 	else
@@ -51,13 +49,12 @@ int	append_node( t_stack *stack, int value)
 		while (current_node->next)
 			current_node = current_node->next;
 		current_node->next = new_node;
-		new_node->previous = current_node;
 	}
 	refresh_stack(stack);
 	return (0);
 }
 
-// return stack size
+// Return stack size
 size_t	get_stack_size(t_stack *stack)
 {
 	int		i;
@@ -76,24 +73,7 @@ size_t	get_stack_size(t_stack *stack)
 	return (i);
 }
 
-// display stack
-void	stack_display(t_stack *stack)
-{
-	t_node	*current_node;
-
-	if (!stack)
-		return ;
-	current_node = stack->head;
-	ft_printf("Stack %c: address %p, max_size: %d, current_size: %d,\n\n", stack->name, &stack, stack->max_size, stack->current_size);
-	while (current_node)
-	{
-		ft_printf("value:%d, address:%p, index: %d, above_median: %d\n", current_node->value, &current_node, current_node->index, current_node->above_median);
-		current_node = current_node->next;
-	}
-	ft_printf("\n");
-}
-
-// clear stack
+// Free each node of the stack then free the stack
 void	clear_stack(t_stack *stack)
 {
 	t_node	*current_node;
@@ -101,7 +81,6 @@ void	clear_stack(t_stack *stack)
 
 	if (!stack)
 		return ;
-	//stack_display(stack);
 	if (stack->head)
 	{
 		current_node = stack->head;

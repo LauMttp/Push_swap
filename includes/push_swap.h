@@ -6,7 +6,7 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:38:51 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/01/31 22:43:17 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:01:14 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 typedef struct s_node {
 	struct s_node		*target;
-	struct s_node		*previous;
 	struct s_node		*next;
 	long				push_cost;
 	long				cheapest;

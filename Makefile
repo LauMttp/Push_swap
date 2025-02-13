@@ -6,7 +6,7 @@
 #    By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/13 19:36:59 by lmouttap          #+#    #+#              #
-#    Updated: 2025/01/30 16:39:55 by lmouttap         ###   ########.fr        #
+#    Updated: 2025/02/12 15:14:19 by lmouttap         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = push_swap
 
 CC = cc
-CC_FLAGS = -Wall -Wextra -Werror -g
+CC_FLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
@@ -26,7 +26,6 @@ SOURCES = $(SRC)ft_split.c $(SRC)instructions_2.c $(SRC)instructions.c $(SRC)pus
 
 OBJECTS = $(SOURCES:.c=.o)
 
-# FT_PRINTF settings
 FT_PRINTF_DIR = ./ft_printf
 FT_PRINTF = $(FT_PRINTF_DIR)/ftprintf.a
 

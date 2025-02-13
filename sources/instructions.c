@@ -6,7 +6,7 @@
 /*   By: lmouttap <lmouttap@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 19:43:16 by lmouttap          #+#    #+#             */
-/*   Updated: 2025/02/06 23:32:26 by lmouttap         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:07:14 by lmouttap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	refresh_stack(t_stack *stack)
 	return (0);
 }
 
-// sa et sb
+// sa & sb
 int	swap(t_stack *stack, int printed)
 {
 	t_node	*a;
@@ -46,14 +46,14 @@ int	swap(t_stack *stack, int printed)
 	a = stack->head;
 	b = a->next;
 	stack->head = b;
-	b->previous = NULL;
-	a->previous = b;
-	a->next = b->next;
+	if (b->next)
+		a->next = b->next;
+	else
+		a->next = NULL;
 	b->next = a;
 	if (!printed)
 		ft_printf("s%c\n", stack->name);
 	refresh_stack(stack);
-	stack_display(stack);
 	return (0);
 }
 
